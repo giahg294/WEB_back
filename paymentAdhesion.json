@@ -1,0 +1,51 @@
+{
+    "data": {
+        "order": {
+            "id": 40893,
+            "date": "2025-03-20T10:22:09.0791091+01:00",
+            "formSlug": "adhesion-2024-2025-sport",
+            "formType": "Membership",
+            "organizationName": "FOUCH'A CHEVAL",
+            "organizationSlug": "fouch-a-cheval",
+            "organizationType": "Association1901",
+            "organizationIsUnderColucheLaw": false,
+            "formName": "Adh\u00e9sion 2024/2025 - Sport",
+            "meta": {
+                "createdAt": "2025-03-20T10:21:55.0462361+01:00",
+                "updatedAt": "2025-03-20T10:22:09.0846267+01:00"
+            },
+            "isAnonymous": false,
+            "isAmountHidden": false
+        },
+        "payer": {
+            "email": "lucaslhomme01@gmail.com",
+            "country": "FRA",
+            "firstName": "Lucas",
+            "lastName": "L'HOMME"
+        },
+        "items": [
+            {
+                "shareAmount": 100,
+                "shareItemAmount": 100,
+                "id": 40893,
+                "amount": 100,
+                "type": "Membership",
+                "state": "Processed"
+            }
+        ],
+        "cashOutState": "Transfered",
+        "paymentReceiptUrl": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/adhesions/adhesion-2024-2025-sport/paiement-attestation/40893",
+        "id": 26229,
+        "amount": 100,
+        "date": "2025-03-20T10:22:08.8974603+01:00",
+        "paymentMeans": "Card",
+        "installmentNumber": 1,
+        "state": "Authorized",
+        "meta": {
+            "createdAt": "2025-03-20T10:21:55.0462361+01:00",
+            "updatedAt": "2025-03-20T10:22:08.9114072+01:00"
+        },
+        "refundOperations": []
+    },
+    "eventType": "Payment"
+}

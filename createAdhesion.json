@@ -1,0 +1,28 @@
+{
+    "data": {
+        "organizationName": "FOUCH'A CHEVAL",
+        "tiers": [],
+        "activityType": "Atelier",
+        "activityTypeId": 16,
+        "validityType": "Custom",
+        "currency": "EUR",
+        "description": "",
+        "startDate": "2024-09-01T00:00:00+00:00",
+        "endDate": "2025-06-30T23:59:59+00:00",
+        "meta": {
+            "createdAt": "2025-03-20T10:19:19.906358+01:00",
+            "updatedAt": "2025-03-20T10:19:19.9065872+01:00"
+        },
+        "state": "Draft",
+        "title": "Adh\u00e9sion 2024/2025 - Sport",
+        "widgetButtonUrl": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/adhesions/adhesion-2024-2025-sport/widget-bouton",
+        "widgetFullUrl": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/adhesions/adhesion-2024-2025-sport/widget",
+        "widgetVignetteHorizontalUrl": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/adhesions/adhesion-2024-2025-sport/widget-vignette-horizontale",
+        "widgetVignetteVerticalUrl": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/adhesions/adhesion-2024-2025-sport/widget-vignette",
+        "formSlug": "adhesion-2024-2025-sport",
+        "formType": "Membership",
+        "url": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/adhesions/adhesion-2024-2025-sport",
+        "organizationSlug": "fouch-a-cheval"
+    },
+    "eventType": "Form"
+}

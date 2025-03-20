@@ -1,0 +1,36 @@
+{
+    "data": {
+        "organizationName": "FOUCH'A CHEVAL",
+        "tiers": [],
+        "activityType": "S\u00e9jour",
+        "activityTypeId": 18679,
+        "place": {
+            "address": "Ville",
+            "name": "villeur",
+            "city": "Neuvy-Saint-S\u00e9pulchre",
+            "zipCode": "36230",
+            "country": "FRA",
+            "geoLocation": {
+                "latitude": 46.569463,
+                "longitude": 1.830832
+            }
+        },
+        "currency": "EUR",
+        "description": "",
+        "meta": {
+            "createdAt": "2025-03-20T10:06:08.2078202+01:00",
+            "updatedAt": "2025-03-20T10:06:08.22+01:00"
+        },
+        "state": "Draft",
+        "title": "pistoche lundi soir",
+        "widgetButtonUrl": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/evenements/pistoche-lundi-soir-1/widget-bouton",
+        "widgetFullUrl": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/evenements/pistoche-lundi-soir-1/widget",
+        "widgetVignetteHorizontalUrl": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/evenements/pistoche-lundi-soir-1/widget-vignette-horizontale",
+        "widgetVignetteVerticalUrl": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/evenements/pistoche-lundi-soir-1/widget-vignette",
+        "formSlug": "pistoche-lundi-soir-1",
+        "formType": "Event",
+        "url": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/evenements/pistoche-lundi-soir-1",
+        "organizationSlug": "fouch-a-cheval"
+    },
+    "eventType": "Form"
+}

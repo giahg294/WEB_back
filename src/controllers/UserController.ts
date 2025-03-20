@@ -2,7 +2,10 @@ import { Request, Response } from 'express';
 
 export class UserController {
     getUsers = async (req: Request, res: Response): Promise<void> => {
-        res.send('GET /users');
+        res.json({
+            "message": "GET /users",
+            "info": "This is the default route for the users endpoint"
+        })
     }
 
     getUserById = async (req: Request, res: Response): Promise<void> => {
