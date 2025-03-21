@@ -12,8 +12,10 @@ export interface IUser extends Document {
 const userSchema = new Schema({
     nom: { type: String, required: true },
     prenom: { type: String, required: true },
-    email: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
     adhesion: [{ type: [Schema.Types.ObjectId], default: [], ref: "Adhesion" }],
 });
 
 const User = mongoose.model<IUser>("User", userSchema);
+
+export default User;
