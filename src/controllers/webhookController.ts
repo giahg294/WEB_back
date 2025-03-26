@@ -15,7 +15,7 @@ export const webhookHandler = (req: Request, res: Response) => {
         handleAdhesionCreation({ nom: data.formSlug, url: data.url });
       } else if (data.formType === "Event") {
         console.log("Event form received");
-        handleEventCreation({ nom: data.formSlug, url: data.url });
+        handleEventCreation({ slug:data.formSlug ,nom: data.title, url: data.url });
       } else {
         console.log("Unknown Event type");
       }

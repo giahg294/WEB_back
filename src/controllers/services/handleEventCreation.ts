@@ -4,7 +4,7 @@ const eventRepository = new EventRepository();
 
 export async function handleEventCreation(eventData: CreateEventData) {
     try {
-        const isExistingEvent = await eventRepository.getEventByName(eventData.nom);
+        const isExistingEvent = await eventRepository.getEventBySlug(eventData.slug);
         if (!isExistingEvent) eventRepository.create(eventData);
         else console.log("Event already exists");
     } catch {

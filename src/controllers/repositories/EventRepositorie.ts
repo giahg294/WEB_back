@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import Event, { IEvent } from "../../model/Event";
 
 export interface CreateEventData {
+    slug:string;
     nom: string;
     url: string;
 }
@@ -9,6 +10,7 @@ export interface CreateEventData {
 export class EventRepository {
     create = async (eventData: CreateEventData): Promise<IEvent> => {
         const newEvent = new Event({
+            slug: eventData.slug,
             nom: eventData.nom,
             url: eventData.url,
             participants: [],
@@ -19,14 +21,14 @@ export class EventRepository {
             throw new Error("Error while saving event" + error);
         }
     };
-    getEventByName = async (nom: string): Promise<IEvent | null> => {
-        return await Event.findOne({ nom });
+    getEventBySlug = async (slug: string): Promise<IEvent | null> => {
+        return await Event.findOne({ slug });
     };
     addUserToEvent = async (
         eventName: string,
         userId: mongoose.Types.ObjectId
     ): Promise<void> => {
-        const event = await this.getEventByName(eventName);
+        const event = await this.getEventBySlug(eventName);
         if (!event) {
             throw new Error("Event not found");
         }
