@@ -7,9 +7,7 @@ export class StatController {
         try {
             const adhesion = await adhesionRepository.getAllAdhesions();
             const data = adhesion.map((adhesion) => ({ nom: adhesion.nom, url: adhesion.url }));
-            res.json({
-                data
-            });
+            res.json(data);
         } catch (err: any) {
             res.status(500).json({message: err.message});
         }
@@ -20,9 +18,7 @@ export class StatController {
             console.log(events);
             const data = events.map((event) => ({ nom: event.nom, url: event.url }));
             console.log(data);
-            res.json({
-                data
-            });
+            res.json(data);
         } catch(err: any) {
             res.status(500).json({message: err.message});
         }
