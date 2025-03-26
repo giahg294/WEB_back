@@ -1,5 +1,12 @@
 # WEB_back
 
+va dans le dossier du back, et fait
+```
+npm install
+npm run dev
+```
+
+Le serveur se lance sur le port 4000
 ### GetPayment
 
 ```
@@ -34,7 +41,7 @@ GET http://localhost:4000/stats/getPayment
 GET http://localhost:4000/stats/getAdhesion
 ```
 
-```
+```json
 [
     {
         "nom": "adhesion-2024-2025-sport",
@@ -53,7 +60,7 @@ GET http://localhost:4000/stats/getAdhesion
 GET http://localhost:4000/stats/getEvent
 ```
 
-```
+```json
 [
     {
         "nom": "pistoche lundi soir mais semaine pro",
