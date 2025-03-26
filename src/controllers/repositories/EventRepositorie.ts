@@ -33,6 +33,9 @@ export class EventRepository {
         event.participants.push(userId);
         await event.save();
     }
+    getAllEvents = async (): Promise<IEvent[]> => {
+        return await Event.find();
+    }
 }
 
 export const eventRepository = new EventRepository();

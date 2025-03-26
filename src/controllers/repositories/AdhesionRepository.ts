@@ -39,6 +39,9 @@ export class AdhesionRepository {
     const adhesion = await Adhesion.findOne({ participants: userId });
     return adhesion?._id;
   };
+  getAllAdhesions = async (): Promise<IAdhesion[]> => {
+    return await Adhesion.find();
+  }
 }
 
 export const adhesionRepository = new AdhesionRepository();
