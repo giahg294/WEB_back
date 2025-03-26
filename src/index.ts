@@ -1,8 +1,10 @@
 // src/index.ts
 import express from 'express';
-import userRoutes from './routes/userRoutes';
 import connectDB from './config/db';
-import dotenv from 'dotenv';
+
+import userRoutes from './routes/userRoutes';
+import statRoutes from './routes/statRoutes';
+
 import { webhookHandler } from './controllers/webhookController';
 
 
@@ -15,6 +17,7 @@ connectDB();
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/stats', statRoutes )
 app.post('/webhook', webhookHandler)
 
 

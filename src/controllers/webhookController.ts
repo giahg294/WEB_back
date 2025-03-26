@@ -39,7 +39,7 @@ export const webhookHandler = (req: Request, res: Response) => {
             nom: data.payer.firstName,
             prenom: data.payer.lastName,
             email: data.payer.email,
-            amount: data.items[0].amount,
+            amount: data.items.map((item: any) => item.amount),
         });
       } else {
         console.log("Unknown Event type");

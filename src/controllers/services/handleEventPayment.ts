@@ -15,7 +15,7 @@ export interface PaymentEventData {
   prenom: string;
   email: string;
   formSlug: string;
-  amount: number;
+  amount: number[];
 }
 
 export async function handleEventPayment(eventData: PaymentEventData) {
@@ -31,12 +31,13 @@ export async function handleEventPayment(eventData: PaymentEventData) {
     if (!event) {
       throw new Error("Event not found");
     }
-
-    await paymentRepository.create({
-      type: eventData.formType,
-      amount: eventData.amount,
-      userid: newUser._id,
-      membershipidOrEventId: event._id,
+    eventData.amount.forEach(async (amount) => {
+      await paymentRepository.create({
+        type: eventData.formType,
+        amount: amount,
+        userid: newUser._id,
+        membershipidOrEventId: event._id,
+      });
     });
 
     await eventRepository.addUserToEvent(eventData.formSlug, newUser._id);
@@ -46,11 +47,14 @@ export async function handleEventPayment(eventData: PaymentEventData) {
       throw new Error("Event not found");
     }
     await eventRepository.addUserToEvent(eventData.formSlug, userId);
-    await paymentRepository.create({
+
+    eventData.amount.forEach(async (amount) => {
+      await paymentRepository.create({
         type: eventData.formType,
-        amount: eventData.amount,
+        amount: amount,
         userid: userId,
-        membershipidOrEventId:event._id,
+        membershipidOrEventId: event._id,
+      });
     });
   }
 }
