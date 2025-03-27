@@ -8,6 +8,7 @@ export interface IEvent extends Document {
 }
 
 const eventSchema = new Schema({
+    slug: { type: String, required: true },
     nom: { type: String, required: true },
     url: { type: String, required: true },
     participants: [{ type: [Schema.Types.ObjectId], default: [], ref: "User" }],

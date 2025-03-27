@@ -23,8 +23,6 @@ const adhesionSchema = new Schema({
     type: mongoose.Types.ObjectId, // Correction ici - pas de double brackets
     ref: "User" 
   }],
-}, {
-  timestamps: true // Ajoute createdAt et updatedAt
 });
 
 // Ajouter un message d'erreur personnalisé pour les violations d'unicité

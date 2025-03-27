@@ -27,7 +27,7 @@ export async function handleEventPayment(eventData: PaymentEventData) {
       email: eventData.email,
     });
 
-    const event = await eventRepository.getEventByName(eventData.formSlug);
+    const event = await eventRepository.getEventBySlug(eventData.formSlug);
     if (!event) {
       throw new Error("Event not found");
     }
@@ -42,7 +42,7 @@ export async function handleEventPayment(eventData: PaymentEventData) {
 
     await eventRepository.addUserToEvent(eventData.formSlug, newUser._id);
   } else {
-    const event = await eventRepository.getEventByName(eventData.formSlug);
+    const event = await eventRepository.getEventBySlug(eventData.formSlug);
     if (!event) {
       throw new Error("Event not found");
     }
