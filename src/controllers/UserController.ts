@@ -1,4 +1,8 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const jwt = require('jsonwebtoken');
 
 export class UserController {
     getUsers = async (req: Request, res: Response): Promise<void> => {
@@ -22,6 +26,41 @@ export class UserController {
 
     deleteUser = async (req: Request, res: Response): Promise<void> => {
         res.send('DELETE /users/:id');
+    }
+
+    login = async (req: Request, res: Response): Promise<void> => {
+        const user_password = req.body.password;
+
+        if (user_password == process.env.ADMIN_PASSWORD){
+            const token = jwt.sign({id: 1, role: 'admin'}, process.env.SECRET_KEY, {expiresIn : '1h'});
+            res.cookie("access_token", token, {httpOnly: true, secure: true});
+            res.send(req.body);
+        }
+        else{
+            res.status(401);
+            res.send("Invalid password");
+        }
+    }
+
+    authorize = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+        const token = req.cookies?.access_token;
+        if (!token){
+            res.status(403).send("Access denied.");
+            return;
+        }
+        try{
+            const data = jwt.verify(token, process.env.SECRET_KEY);
+            (req as any).user = data;
+            next();
+        }
+        catch(error){
+            res.status(403).send("Access denied.");
+            return;
+        }
+    }
+
+    dashboard = async (req: Request, res: Response): Promise<void> => {
+        res.send("Connection successful.");
     }
 }
 

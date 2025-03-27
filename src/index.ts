@@ -1,6 +1,7 @@
 // src/index.ts
 import express from 'express';
 import connectDB from './config/db';
+import cookieParser from 'cookie-parser';
 
 import userRoutes from './routes/userRoutes';
 import statRoutes from './routes/statRoutes';
@@ -12,6 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
+app.use(cookieParser());
 
 connectDB();
 
