@@ -5,6 +5,7 @@ export interface CreateEventData {
     slug:string;
     nom: string;
     url: string;
+    date: string;
 }
 
 export class EventRepository {
@@ -13,6 +14,7 @@ export class EventRepository {
             slug: eventData.slug,
             nom: eventData.nom,
             url: eventData.url,
+            date: eventData.date,
             participants: [],
         });
         try {
@@ -38,6 +40,61 @@ export class EventRepository {
     getAllEvents = async (): Promise<IEvent[]> => {
         return await Event.find();
     }
+    getEventsGroupedByDate = async () => {
+        try {
+          const participantsBySessions = await Event.aggregate([
+            {
+              $addFields: {
+                convertedDate: { $toDate: "$date" }
+              }
+            },
+            {
+              $group: {
+                _id: {
+                  $dateToString: {
+                    format: "%Y-%m-%d",
+                    date: "$convertedDate"
+                  }
+                },
+                events: {
+                  $push: {
+                    slug: "$slug",
+                    nom: "$nom",
+                    nbrParticipants: { $size: "$participants" },
+                    participants: "$participants"
+                  }
+                }
+              }
+            },
+            {
+              $project: {
+                date: "$_id",
+                totalParticipants: {
+                  $reduce: {
+                    input: "$events",
+                    initialValue: 0,
+                    in: { 
+                      $add: [
+                        "$$value", 
+                        { $size: "$$this.participants" }
+                      ]
+                    }
+                  }
+                },
+                eventDetails: "$events"
+              }
+            },
+            {
+              $sort: { date: 1 }
+            }
+          ]);
+        
+          return participantsBySessions;
+        } catch (error) {
+          console.error("Erreur lors de la récupération des participants :", error);
+          throw error;
+        }
+      };
 }
 
 export const eventRepository = new EventRepository();

@@ -13,7 +13,7 @@ const adhesionSchema = new Schema({
     required: true, 
     unique: true, 
     trim: true,
-    index: true // Ajoute un index pour améliorer les performances des recherches
+    index: true
   },
   url: { 
     type: String, 

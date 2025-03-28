@@ -1,12 +1,14 @@
 # WEB_back
 
 va dans le dossier du back, et fait
+
 ```
 npm install
 npm run dev
 ```
 
 Le serveur se lance sur le port 4000
+
 ### GetPayment
 
 ```
@@ -54,6 +56,7 @@ GET http://localhost:4000/stats/getAdhesion
     }
 ]
 ```
+
 ### GetEvent
 
 ```
@@ -64,12 +67,166 @@ GET http://localhost:4000/stats/getEvent
 [
     {
         "nom": "pistoche lundi soir mais semaine pro",
-        "url": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/evenements/pistoche-lundi-soir-1"
+        "slug": "pistoche-lundi-soir-mais-semaine-pro"
+        "url": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/evenements/pistoche-lundi-soir-1",
+        "date": "la date"
     },
     [............]
     {
-        "nom": "pistoche lundi soir mais semaine pro pro",
-        "url": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/evenements/pistoche-lundi-soir-1"
+        "nom": "pistoche lundi soir mais semaine pro",
+        "slug": "pistoche-lundi-soir-mais-semaine-pro"
+        "url": "https://www.helloasso-sandbox.com/associations/fouch-a-cheval/evenements/pistoche-lundi-soir-1",
+        "date": "la date"
     }
 ]
 ```
+
+### getParticipantsDetailsByEvent
+
+```
+GET http://localhost:4000/stats/getParticipantsDetailsByEvent
+```
+
+```json
+[
+  {
+    "_id": "2001-08-24",
+    "date": "2001-08-24",
+    "totalParticipants": 0,
+    "eventDetails": [
+      {
+        "slug": "pistoche-TR",
+        "nom": "pistoche TR",
+        "nbrParticipants": 0,
+        "participants": []
+      },
+      {
+        "slug": "pistoche-Normal",
+        "nom": "pistoche Normal",
+        "nbrParticipants": 0,
+        "participants": []
+      },
+      {
+        "slug": "pistoche-Abo",
+        "nom": "pistoche Abo",
+        "nbrParticipants": 0,
+        "participants": []
+      }
+    ]
+  },
+  {
+    "_id": "2025-03-03",
+    "date": "2025-03-03",
+    "totalParticipants": 0,
+    "eventDetails": [
+      {
+        "slug": "pistoche-Abo-2",
+        "nom": "pistoche Abo 2",
+        "nbrParticipants": 0,
+        "participants": []
+      },
+      {
+        "slug": "pistoche-Normal-2",
+        "nom": "pistoche Normal 2",
+        "nbrParticipants": 0,
+        "participants": []
+      },
+      {
+        "slug": "pistoche-TR-2",
+        "nom": "pistoche TR 2",
+        "nbrParticipants": 0,
+        "participants": []
+      }
+    ]
+  }
+]
+```
+
+### getParticipanByEvent
+
+```
+GET http://localhost:4000/stats/getParticipanByEvent
+```
+
+```json
+[
+  {
+    "date": "2001-08-24",
+    "totalmembers": 0
+  },
+  {
+    "date": "2025-03-03",
+    "totalmembers": 0
+  }
+]
+```
+
+### getTimeBasedAdhesionPayment
+
+```
+GET http://localhost:4000/stats/getTimeBasedAdhesionPayment
+```
+
+```json
+{
+  "totalMembershipPayments": 1,
+  "growthData": [
+    {"x": "2025-03","y": 1},
+    {"x": "2025-04","y": 5}
+    {"x": "2025-05","y": 10}
+  ]
+}
+```
+
+Nombre de new adherents en fonction des mois
+
+### getTotalMoneyTimeBasedPayment
+
+```
+GET http://localhost:4000/stats/getTotalMoneyTimeBasedPayment
+```
+
+```json
+{ "growthData": [
+  { "x": "2025-03", "y": 21 },
+  { "x": "2025-04", "y": 40 }
+  ] 
+}
+```
+
+Représente tout l'argent reçu Event + Adhesion
+
+
+### getTotalMoneyTimeBasedAdhesion
+
+```
+GET http://localhost:4000/stats/getTotalMoneyTimeBasedAdhesion
+```
+
+```json
+{"growthData":[
+  {"x":"2025-03","y":1},
+  {"x":"2025-04","y":10}
+  ]
+}
+
+```
+
+Représente tout l'argent reçu uniquement pour les Adhesions
+
+### getTotalMoneyTimeBasedEvent
+
+```
+GET http://localhost:4000/stats/getTotalMoneyTimeBasedEvent
+```
+
+```json
+{
+    "growthData": [
+        {"x": "2025-03","y": 20},
+        {"x": "2025-04","y": 25}
+    ]
+}
+```
+
+Représente tout l'argent reçu uniquement pour les Events
