@@ -30,6 +30,11 @@ export class UserRepository {
       throw new Error("Error while saving user: " + error);
     }
   };
+  getNonAdherentUsers = async (): Promise<IUser[]> => {
+    const data:IUser[] = await User.find();
+    const filteredData = data.filter(User => User.adhesion.length == 0);
+    return filteredData;
+  }
 }
 
 

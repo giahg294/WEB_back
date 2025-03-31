@@ -60,7 +60,7 @@ export class StatController {
       res.status(500).json({ message: err.message });
     }
   };
-  getParticipanByEvent = async (req: Request, res: Response): Promise<void> => {
+  getParticipantsByEvent = async (req: Request, res: Response): Promise<void> => {
     try {
       const data = await eventRepository.getEventsGroupedByDate();
       const event = data.map((event) => ({
@@ -162,7 +162,7 @@ export class StatController {
     } catch (err: any) {
       res.status(500).json({ message: err.message });
     }
-  }
+  };
   getTimeBasedMoneyAdhesion = async (req: Request, res: Response): Promise<void> => {
     try {
       const payments = await paymentRepository.getAllPayments();
@@ -205,7 +205,7 @@ export class StatController {
     }catch (err: any) {
       res.status(500).json({ message: err.message });
     }
-  }
+  };
   getTimebasedMoneyEvent = async (req: Request, res: Response): Promise<void> => {  
     try {
       const payments = await paymentRepository.getAllPayments();

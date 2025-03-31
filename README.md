@@ -142,7 +142,7 @@ GET http://localhost:4000/stats/getParticipantsDetailsByEvent
 ]
 ```
 
-### getParticipanByEvent
+### getParticipantsByEvent
 
 ```
 GET http://localhost:4000/stats/getParticipanByEvent
@@ -187,15 +187,15 @@ GET http://localhost:4000/stats/getTotalMoneyTimeBasedPayment
 ```
 
 ```json
-{ "growthData": [
-  { "x": "2025-03", "y": 21 },
-  { "x": "2025-04", "y": 40 }
-  ] 
+{
+  "growthData": [
+    { "x": "2025-03", "y": 21 },
+    { "x": "2025-04", "y": 40 }
+  ]
 }
 ```
 
 Représente tout l'argent reçu Event + Adhesion
-
 
 ### getTotalMoneyTimeBasedAdhesion
 
@@ -204,12 +204,12 @@ GET http://localhost:4000/stats/getTotalMoneyTimeBasedAdhesion
 ```
 
 ```json
-{"growthData":[
-  {"x":"2025-03","y":1},
-  {"x":"2025-04","y":10}
+{
+  "growthData": [
+    { "x": "2025-03", "y": 1 },
+    { "x": "2025-04", "y": 10 }
   ]
 }
-
 ```
 
 Représente tout l'argent reçu uniquement pour les Adhesions
@@ -222,10 +222,10 @@ GET http://localhost:4000/stats/getTotalMoneyTimeBasedEvent
 
 ```json
 {
-    "growthData": [
-        {"x": "2025-03","y": 20},
-        {"x": "2025-04","y": 25}
-    ]
+  "growthData": [
+    { "x": "2025-03", "y": 20 },
+    { "x": "2025-04", "y": 25 }
+  ]
 }
 ```
 

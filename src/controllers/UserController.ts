@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import dotenv from 'dotenv';
+import { userRepository, UserRepository } from './repositories/UserRepositorie';
 dotenv.config();
 
 const jwt = require('jsonwebtoken');
@@ -62,6 +63,12 @@ export class UserController {
     dashboard = async (req: Request, res: Response): Promise<void> => {
         res.send("Connection successful.");
     }
+
+    
+    getIllegaux = async (req: Request, res: Response): Promise<void> => {
+        const illegaux = await userRepository.getNonAdherentUsers();
+        res.json(illegaux);
+    }    
 }
 
 
