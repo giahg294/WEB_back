@@ -234,7 +234,7 @@ Représente tout l'argent reçu uniquement pour les Events
 ### getIllegaux
 
 ```
-GET http://localhost:4000/stats/getIllegaux
+GET http://localhost:4000/api/users/getillegaux
 ```
 
 ### sendEmail
