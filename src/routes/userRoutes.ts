@@ -9,7 +9,7 @@ const router = Router();
 // router.put('/:id', userController.updateUser);
 // router.delete('/:id', userController.deleteUser);
 router.post('/login', userController.login);
-router.get('/admin/dashboard', userController.authorize, userController.dashboard);
-router.get('/getgeteget', userController.getIllegaux);
+router.get('/admin/dashboard', userController.middleware, userController.dashboard);
+router.get('/getillegaux', userController.middleware, userController.getIllegaux);
 
 export default router;

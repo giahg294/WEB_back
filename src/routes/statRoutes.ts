@@ -1,15 +1,16 @@
 import { Router } from "express";
 import { statController } from "../controllers/statController";
+import { userController } from '../controllers/UserController';
 
 const router = Router();
 
 router.get("/getEvent", statController.getEventName);
-router.get("/getAdhesion", statController.getAdhesion);
-router.get("/getPayment", statController.getPayment);
-router.get("/getParticipantsDetailsByEvent", statController.getParticipantsDetailsByEvent);
-router.get("/getParticipanByEvent", statController.getParticipantsByEvent);
-router.get("/getTimeBasedAdhesionPayment", statController.getTimeBasedAdhesionPayment);
-router.get("/getTotalMoneyTimeBasedPayment", statController.getTimeBasedMoneyTotal);
-router.get("/getTotalMoneyTimeBasedAdhesion", statController.getTimeBasedMoneyAdhesion);
-router.get("/getTotalMoneyTimeBasedEvent", statController.getTimebasedMoneyEvent);
+router.get("/getAdhesion", userController.middleware, statController.getAdhesion);
+router.get("/getPayment", userController.middleware, statController.getPayment);
+router.get("/getParticipantsDetailsByEvent", userController.middleware, statController.getParticipantsDetailsByEvent);
+router.get("/getParticipanByEvent", userController.middleware, statController.getParticipantsByEvent);
+router.get("/getTimeBasedAdhesionPayment", userController.middleware, statController.getTimeBasedAdhesionPayment);
+router.get("/getTotalMoneyTimeBasedPayment", userController.middleware, statController.getTimeBasedMoneyTotal);
+router.get("/getTotalMoneyTimeBasedAdhesion", userController.middleware, statController.getTimeBasedMoneyAdhesion);
+router.get("/getTotalMoneyTimeBasedEvent", userController.middleware, statController.getTimebasedMoneyEvent);
 export default router;

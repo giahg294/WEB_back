@@ -45,7 +45,7 @@ export class UserController {
         }
     }
 
-    authorize = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    middleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         const token = req.cookies?.access_token;
         if (!token){
             res.status(403).send("Access denied.");
