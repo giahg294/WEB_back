@@ -5,7 +5,7 @@ const router = Router();
 
 
 router.post('/login', userController.login);
-router.get('/admin/dashboard', userController.dashboard);
+router.get('/admin/dashboard', userController.middleware, userController.dashboard);
 router.get('/getillegaux', userController.getIllegaux);
 
 export default router;
