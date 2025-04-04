@@ -26,6 +26,7 @@ export class StatController {
         date: event.date,
         participantsMax: event.nbrMax,
         participants: event.participants.length,
+        complete: (event.nbrMax ?? 1000) <= event.participants.length,
       }));
       res.json(data);
     } catch (err: any) {

@@ -4,8 +4,8 @@ import { statController } from "../controllers/statController";
 const router = Router();
 
 router.get("/getEvent", statController.getEventName);
-router.get("/getAdhesion", statController.getAdhesion);
-router.get("/getPayment", statController.getPayment);
+router.get("/getAdhesion",statController.getAdhesion);
+router.get("/getPayment",statController.getPayment);
 router.get("/getParticipantsDetailsByEvent", statController.getParticipantsDetailsByEvent);
 router.get("/getParticipanByEvent", statController.getParticipantsByEvent);
 router.get("/getTimeBasedAdhesionPayment", statController.getTimeBasedAdhesionPayment);
