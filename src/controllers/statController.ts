@@ -3,6 +3,7 @@ import { eventRepository } from "./repositories/EventRepositorie";
 import { adhesionRepository } from "./repositories/AdhesionRepository";
 import { paymentRepository } from "./repositories/PaymentRepositorie";
 import { totalmem } from "os";
+import { abonementRepository } from "./repositories/AbonnementRepository";
 export class StatController {
   getAdhesion = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -246,6 +247,19 @@ export class StatController {
           y: item.cumulativeAmount / 100
         }))
       });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  }
+  getAbonementDetails = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const abonements = await abonementRepository.getAllAbonementsMembers();
+      const data: { nom: string; abonementUrl: string; participants: any[] }[] = abonements.map((abonement) => ({
+        nom: abonement.nom,
+        abonementUrl: abonement.url,
+        participants: abonement.participants
+      }));
+      res.json(data);
     } catch (err: any) {
       res.status(500).json({ message: err.message });
     }

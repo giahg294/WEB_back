@@ -1,4 +1,6 @@
 import { PaymentType } from "../../model/Payment";
+import { ABONEMENT_TARIF_REDUIT, ABONNEMENT_TARIF_NORMAL } from "../../utils/constantes";
+import { abonementRepository } from "../repositories/AbonnementRepository";
 import { AdhesionRepository } from "../repositories/AdhesionRepository";
 import { EventRepository } from "../repositories/EventRepositorie";
 import { PaymentRepository } from "../repositories/PaymentRepositorie";
@@ -28,33 +30,62 @@ export async function handleEventPayment(eventData: PaymentEventData) {
     });
 
     const event = await eventRepository.getEventBySlug(eventData.formSlug);
-    if (!event) {
-      throw new Error("Event not found");
+    const abonement = await abonementRepository.getAbonementBySlug(eventData.formSlug);
+    if (!event && !abonement) {
+      throw new Error("Event ou Abo not found");
     }
-    eventData.amount.forEach(async (amount) => {
-      await paymentRepository.create({
-        type: eventData.formType,
-        amount: amount,
-        userid: newUser._id,
-        membershipidOrEventId: event._id,
-      });
-    });
 
-    await eventRepository.addUserToEvent(eventData.formSlug, newUser._id);
+
+    if(eventData.formSlug === ABONEMENT_TARIF_REDUIT || eventData.formSlug === ABONNEMENT_TARIF_NORMAL) {
+      await abonementRepository.addUserToAbonement(eventData.formSlug, String(newUser._id));
+      eventData.amount.forEach(async (amount) => {
+        await paymentRepository.create({
+          type: eventData.formSlug as PaymentType,
+          amount: amount,
+          userid: newUser._id,
+          membershipidOrEventId: event ? event._id : abonement ? abonement._id : null,
+        });
+      });
+    } else {
+      await eventRepository.addUserToEvent(eventData.formSlug, newUser._id);
+      eventData.amount.forEach(async (amount) => {
+        await paymentRepository.create({
+          type: eventData.formType,
+          amount: amount,
+          userid: newUser._id,
+          membershipidOrEventId: event ? event._id : abonement ? abonement._id : null,
+        });
+      });
+    }
   } else {
     const event = await eventRepository.getEventBySlug(eventData.formSlug);
-    if (!event) {
-      throw new Error("Event not found");
+    const abonement = await abonementRepository.getAbonementBySlug(eventData.formSlug);
+    if (!event && !abonement) {
+      throw new Error("Event ou Abo not found");
     }
-    await eventRepository.addUserToEvent(eventData.formSlug, userId);
-
-    eventData.amount.forEach(async (amount) => {
-      await paymentRepository.create({
-        type: eventData.formType,
-        amount: amount,
-        userid: userId,
-        membershipidOrEventId: event._id,
+    if(eventData.formSlug === ABONEMENT_TARIF_REDUIT || eventData.formSlug === ABONNEMENT_TARIF_NORMAL) {
+      await abonementRepository.addUserToAbonement(eventData.nom, String(userId));
+      
+      eventData.amount.forEach(async (amount) => {
+        await paymentRepository.create({
+          type: eventData.formSlug as PaymentType,
+          amount: amount,
+          userid: userId,
+          membershipidOrEventId: event ? event._id : abonement ? abonement._id : null,
+        });
       });
-    });
+    } else {
+      await eventRepository.addUserToEvent(eventData.formSlug, userId);
+      
+      eventData.amount.forEach(async (amount) => {
+        await paymentRepository.create({
+          type: eventData.formType,
+          amount: amount,
+          userid: userId,
+          membershipidOrEventId: event ? event._id : abonement ? abonement._id : null,
+        });
+      });
+    }
+
   }
 }

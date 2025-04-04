@@ -6,7 +6,7 @@ export interface CreatePaymentData {
   type: PaymentType;
   amount: number;
   userid: mongoose.Types.ObjectId;
-  membershipidOrEventId: mongoose.Types.ObjectId;
+  membershipidOrEventId: mongoose.Types.ObjectId | null;
 }
 
 export class PaymentRepository {

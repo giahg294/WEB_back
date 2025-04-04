@@ -13,4 +13,5 @@ router.get("/getTimeBasedAdhesionPayment", userController.middleware, statContro
 router.get("/getTotalMoneyTimeBasedPayment", userController.middleware, statController.getTimeBasedMoneyTotal);
 router.get("/getTotalMoneyTimeBasedAdhesion", userController.middleware, statController.getTimeBasedMoneyAdhesion);
 router.get("/getTotalMoneyTimeBasedEvent", userController.middleware, statController.getTimebasedMoneyEvent);
+router.get("/getAbonnement", statController.getAbonementDetails);
 export default router;
