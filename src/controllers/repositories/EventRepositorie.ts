@@ -10,6 +10,7 @@ export interface CreateEventData {
 
 export class EventRepository {
     create = async (eventData: CreateEventData): Promise<IEvent> => {
+      
         const newEvent = new Event({
             slug: eventData.slug,
             nom: eventData.nom,
