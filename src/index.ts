@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 
 import userRoutes from './routes/userRoutes';
 import statRoutes from './routes/statRoutes';
+import mailRoutes from './routes/mailRoutes';
 
 import { webhookHandler } from './controllers/webhookController';
 
@@ -24,6 +25,7 @@ connectDB();
 app.use('/api/users', userRoutes);
 app.use('/stats', statRoutes )
 app.post('/webhook', webhookHandler)
+app.use('/email', mailRoutes)
 
 
 app.listen(PORT, () => {
