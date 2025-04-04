@@ -230,3 +230,24 @@ GET http://localhost:4000/stats/getTotalMoneyTimeBasedEvent
 ```
 
 Représente tout l'argent reçu uniquement pour les Events
+<<<<<<< HEAD
+=======
+
+
+
+
+### sendEmail
+
+```
+POST http://localhost:4000/email/illegalUser
+```
+
+Les données à envoyer 
+```json
+{   
+  userWeHaveToSend: string[];
+  subject:string;
+  message:string;
+}
+```
+>>>>>>> 474464b (feat: add mail routes)
