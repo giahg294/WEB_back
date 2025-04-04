@@ -237,24 +237,6 @@ Représente tout l'argent reçu uniquement pour les Events
 GET http://localhost:4000/stats/getIllegaux
 ```
 
-```json
-[
-    {
-        "nom": "Marine",
-        "prenom": "COLLET",
-        "email": "colletmarine@gmail.com",
-        "adhesion": []
-    },
-    [.......]
-    {
-        "nom": "Lucas",
-        "prenom": "L'HOMME",
-        "email": "lucaslhomme01@gmail.com",
-        "adhesion": [1,2]
-    }
-]
-```
-
 ### sendEmail
 
 ```
