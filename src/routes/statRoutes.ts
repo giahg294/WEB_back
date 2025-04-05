@@ -14,4 +14,5 @@ router.get("/getTotalMoneyTimeBasedPayment", statController.getTimeBasedMoneyTot
 router.get("/getTotalMoneyTimeBasedAdhesion", statController.getTimeBasedMoneyAdhesion);
 router.get("/getTotalMoneyTimeBasedEvent", statController.getTimebasedMoneyEvent);
 router.get("/getAbonnement", statController.getAbonementDetails);
+
 export default router;

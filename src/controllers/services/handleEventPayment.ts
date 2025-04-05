@@ -64,7 +64,7 @@ export async function handleEventPayment(eventData: PaymentEventData) {
       throw new Error("Event ou Abo not found");
     }
     if(eventData.formSlug === ABONEMENT_TARIF_REDUIT || eventData.formSlug === ABONNEMENT_TARIF_NORMAL) {
-      await abonementRepository.addUserToAbonement(eventData.nom, String(userId));
+      await abonementRepository.addUserToAbonement(eventData.formSlug, String(userId));
       
       eventData.amount.forEach(async (amount) => {
         await paymentRepository.create({
