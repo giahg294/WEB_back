@@ -20,7 +20,7 @@ export async function handleEventCreation(eventData: CreateEventData) {
             }
         }
         else console.log("Event already exists");
-    } catch {
-        throw new Error("Error while saving event");
+    } catch (error){
+        throw new Error("Error while saving event" + error);
     }
 }
