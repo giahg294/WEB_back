@@ -25,7 +25,8 @@ export class EmailController {
 
     sendEmailToIllegalUsers = async (req: Request, res: Response): Promise<void> => {
         const { userWeHaveToSend, subject, message }: SendEmailRequest = req.body;
-
+        console.log(userWeHaveToSend, subject, message)
+        console.log(process.env.GMAIL_USER, process.env.GMAIL_PASS)
         const mailOptions = {
             from: process.env.GMAIL_USER,
             to: userWeHaveToSend,
@@ -35,7 +36,7 @@ export class EmailController {
 
         this.transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                return res.status(500).json({ error: 'Failed to send email' });
+                return res.status(500).json({ error: 'Failed to send email'+error });
             }
             res.json({ message: 'Email sent successfully', info });
         });
