@@ -42,6 +42,9 @@ export class AdhesionRepository {
   getAllAdhesions = async (): Promise<IAdhesion[]> => {
     return await Adhesion.find();
   }
+  getAllAdhesionWithParticipants = async (): Promise<IAdhesion[]> => {
+    return await Adhesion.find().populate("participants");
+  }
 }
 
 export const adhesionRepository = new AdhesionRepository();

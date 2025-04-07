@@ -56,7 +56,28 @@ GET http://localhost:4000/stats/getAdhesion
     }
 ]
 ```
+### GetAdhesionMembers
 
+```
+GET http://localhost:4000/stats/getAdhesionMembers
+```
+
+```json
+[
+    {
+        "adhesionName": "adhesion-2024-2025-sport",
+        "userNom": "Lucas",
+        "userPrenom": "L'HOMME",
+        "userEmail": "lucaslhomme01@gmail.com"
+    },
+    {
+        "adhesionName": "adhesion-2024-2025-sport",
+        "userNom": "Titouan",
+        "userPrenom": "LeGoat",
+        "userEmail": "titouanLeGoat@gmail.com"
+    }
+]
+```
 ### GetEvent
 
 ```

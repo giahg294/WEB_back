@@ -4,7 +4,30 @@ import { adhesionRepository } from "./repositories/AdhesionRepository";
 import { paymentRepository } from "./repositories/PaymentRepositorie";
 import { totalmem } from "os";
 import { abonementRepository } from "./repositories/AbonnementRepository";
+import { IUser } from "../model/User";
 export class StatController {
+  getAdhesionMembers = async (req: Request, res: Response): Promise<void> => {
+    console.log("getAdhesionMembers called");
+    try {
+      const adhesionByMembers = await adhesionRepository.getAllAdhesionWithParticipants();
+      let listMembers: {adhesionName: string, userNom: string, userPrenom: string, userEmail: string}[] = [];
+
+      adhesionByMembers.forEach((adhesion) => {
+        adhesion.participants.forEach((user: any) => {
+          listMembers.push({
+            adhesionName: adhesion.nom,
+            userNom: user.nom ?? null,
+            userPrenom: user.prenom ?? null,
+            userEmail: user.email ?? null,
+          });
+        });
+      });
+      
+      res.json(listMembers);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  };
   getAdhesion = async (req: Request, res: Response): Promise<void> => {
     try {
       const adhesion = await adhesionRepository.getAllAdhesions();
