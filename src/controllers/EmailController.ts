@@ -27,6 +27,7 @@ export class EmailController {
         const { userWeHaveToSend, subject, message }: SendEmailRequest = req.body;
         console.log(userWeHaveToSend, subject, message)
         console.log(process.env.GMAIL_USER, process.env.GMAIL_PASS)
+        console.log(process.env)
         const mailOptions = {
             from: process.env.GMAIL_USER,
             to: userWeHaveToSend,
