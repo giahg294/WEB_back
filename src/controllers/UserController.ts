@@ -40,7 +40,7 @@ export class UserController {
                 secure: process.env.NODE_ENV === 'production', // true en production
                 sameSite: "lax",
               });
-            res.json({ message: "Login successful" }).status(200);
+            res.json({ message: "Login successful", token }).status(200);
         }
         else{
             res.status(401);
