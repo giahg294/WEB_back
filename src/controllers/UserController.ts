@@ -36,6 +36,7 @@ export class UserController {
         if (user_password == process.env.ADMIN_PASSWORD && user_username == process.env.ADMIN_USERNAME){
             const token = jwt.sign({id: 1, role: 'admin'}, process.env.SECRET_KEY, {expiresIn : '1h'});
             res.cookie("access_token", token, {httpOnly: true, secure: false, sameSite: "lax"});
+            res.status(200).json({ message: "Login successful" });
         }
         else{
             res.status(401);
