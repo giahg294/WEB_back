@@ -4,7 +4,9 @@ import { adhesionRepository } from "./repositories/AdhesionRepository";
 import { paymentRepository } from "./repositories/PaymentRepositorie";
 import { totalmem } from "os";
 import { abonementRepository } from "./repositories/AbonnementRepository";
+import Event, { IEvent } from "../model/Event";
 import { IUser } from "../model/User";
+
 export class StatController {
   getAdhesionMembers = async (req: Request, res: Response): Promise<void> => {
     console.log("getAdhesionMembers called");
@@ -56,6 +58,24 @@ export class StatController {
     } catch (err: any) {
       res.status(500).json({ message: err.message });
     }
+  };
+  updateEvent = async (req: Request, res: Response): Promise<void> => {
+    const {eventSlug, max} = req.body;
+   
+    try {
+      const updatedEvent = await Event.findOneAndUpdate({slug: eventSlug}, {nbrMax: max});
+
+      if (!updatedEvent){
+        console.log('No event found with slug:', eventSlug);
+        res.status(404).json({ message: 'Event not found' });
+      }
+      res.status(200).json(updatedEvent);
+    } 
+    catch (error) {
+      console.error('Update error:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+
   };
   getPayment = async (req: Request, res: Response): Promise<void> => {
     try {

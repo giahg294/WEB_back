@@ -7,6 +7,7 @@ const router = Router();
 // Event
 router.get("/getEvent", statController.getEventName);
 router.get("/getParticipantsDetailsByEvent", statController.getParticipantsDetailsByEvent);
+router.post("/updateEvent", statController.updateEvent);
 
 // Adhesion
 router.get("/getAdhesion", statController.getAdhesion);
