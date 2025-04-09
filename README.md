@@ -56,6 +56,7 @@ GET http://localhost:4000/stats/getAdhesion
     }
 ]
 ```
+
 ### GetAdhesionMembers
 
 ```
@@ -64,20 +65,21 @@ GET http://localhost:4000/stats/getAdhesionMembers
 
 ```json
 [
-    {
-        "adhesionName": "adhesion-2024-2025-sport",
-        "userNom": "Lucas",
-        "userPrenom": "L'HOMME",
-        "userEmail": "lucaslhomme01@gmail.com"
-    },
-    {
-        "adhesionName": "adhesion-2024-2025-sport",
-        "userNom": "Titouan",
-        "userPrenom": "LeGoat",
-        "userEmail": "titouanLeGoat@gmail.com"
-    }
+  {
+    "adhesionName": "adhesion-2024-2025-sport",
+    "userNom": "Lucas",
+    "userPrenom": "L'HOMME",
+    "userEmail": "lucaslhomme01@gmail.com"
+  },
+  {
+    "adhesionName": "adhesion-2024-2025-sport",
+    "userNom": "Titouan",
+    "userPrenom": "LeGoat",
+    "userEmail": "titouanLeGoat@gmail.com"
+  }
 ]
 ```
+
 ### GetEvent
 
 ```
@@ -271,5 +273,20 @@ Les données à envoyer
   userWeHaveToSend: string[];
   subject:string;
   message:string;
+}
+```
+
+### updateEevent
+
+```
+POST  http://localhost:4000/stats/updateEvent
+```
+
+Les données à envoyer
+
+```json
+{
+  "eventSlug": "soire-pistoche-tarif-normal",
+  "max": 65
 }
 ```
