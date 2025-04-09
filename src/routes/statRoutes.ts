@@ -13,7 +13,6 @@ router.post("/updateEvent", statController.updateEvent);
 router.get("/getAdhesion", statController.getAdhesion);
 router.get("/getAdhesionMembers", statController.getAdhesionMembers);
 
-
 // Charts 
 router.get("/getTimeBasedAdhesionPayment", statController.getTimeBasedAdhesionPayment);
 router.get("/getTotalMoneyTimeBasedPayment", statController.getTimeBasedMoneyTotal);

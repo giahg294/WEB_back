@@ -15,7 +15,12 @@ export const webhookHandler = (req: Request, res: Response) => {
         handleAdhesionCreation({ nom: data.formSlug, url: data.url });
       } else if (data.formType === "Event") {
         console.log("Event form received");
-        handleEventCreation({ slug:data.formSlug ,nom: data.title, url: data.url, date: data.startDate });
+        handleEventCreation({
+          slug: data.formSlug,
+          nom: data.title,
+          url: data.url,
+          date: data.startDate,
+        });
       } else {
         console.log("Unknown Event type");
       }
@@ -34,12 +39,12 @@ export const webhookHandler = (req: Request, res: Response) => {
       } else if (data.order.formType === "Event") {
         console.log("Event payment received");
         handleEventPayment({
-            formType: order.formType,
-            formSlug: order.formSlug,
-            nom: data.payer.firstName,
-            prenom: data.payer.lastName,
-            email: data.payer.email,
-            amount: data.items.map((item: any) => item.amount),
+          formType: order.formType,
+          formSlug: order.formSlug,
+          nom: data.payer.firstName,
+          prenom: data.payer.lastName,
+          email: data.payer.email,
+          amount: data.items.map((item: any) => item.amount),
         });
       } else {
         console.log("Unknown Event type");
