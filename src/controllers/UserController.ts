@@ -35,11 +35,6 @@ export class UserController {
 
         if (user_password == process.env.ADMIN_PASSWORD && user_username == process.env.ADMIN_USERNAME){
             const token = jwt.sign({id: 1, role: 'admin'}, process.env.SECRET_KEY, {expiresIn : '1h'});
-            res.cookie("access_token", token, {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'production', // true en production
-                sameSite: "lax",
-              });
             res.json({ message: "Login successful", token }).status(200);
         }
         else{
@@ -49,22 +44,24 @@ export class UserController {
     }
 
     middleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-        const token = req.cookies?.access_token;
-        if (!token){
-            res.status(403).send("Access denied.");
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+        
+        if (!token) {
+            res.sendStatus(401);
             return;
         }
-        try{
-            const data = jwt.verify(token, process.env.SECRET_KEY);
-            (req as any).user = data;
+        
+        jwt.verify(token, process.env.SECRET_KEY as string, (err: any, user: any) => {
+            if (err) {
+                return res.sendStatus(403);
+            }
+            
+            // @ts-ignore
+            req.user = user;
             next();
-        }
-        catch(error){
-            res.status(403).send("Access denied.");
-            return;
-        }
-    }
-
+        });
+    };
     dashboard = async (req: Request, res: Response): Promise<void> => {
         res.send("Connection successful.");
     }
